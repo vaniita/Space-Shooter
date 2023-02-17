@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         print("Hahyoung Kim");
-        print("Masrur Kabir")
+        print("Masrur Kabir");
         print("Ashley Liu");
         
     }
