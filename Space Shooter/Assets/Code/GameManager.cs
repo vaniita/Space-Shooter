@@ -7,7 +7,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        print("Masrur Kabir")
+        print("Hahyoung Kim");
+        print("Masrur Kabir");
         print("Ashley Liu");
         print("Sabrina Li");
         
