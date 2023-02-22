@@ -41,8 +41,6 @@ public class Enemy : MonoBehaviour
             print("HIT");
             _audioSource.PlayOneShot(hurtSound);
             _gameManager.loseLife(lifeValue);
-            // Instantiate(explosion, transform.position, Quaternion.identity);
-            // Destroy(gameObject);
         }
 
         if (other.CompareTag("Kill")){
