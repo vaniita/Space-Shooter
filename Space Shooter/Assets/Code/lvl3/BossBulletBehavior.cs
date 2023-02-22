@@ -23,7 +23,7 @@ public class BossBulletBehavior : MonoBehaviour
     }
 
     void Update() {
-        if (transform.position.x <= -9) {
+        if (transform.position.x <= -11) {
             Destroy(gameObject);
         }
     }

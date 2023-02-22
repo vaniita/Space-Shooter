@@ -13,9 +13,9 @@ public class CalciferSpawner : MonoBehaviour
     {
         _gameManager = GameObject.FindObjectOfType<GameManager>();
         while (_gameManager.GetLives() > 0) {
-            Vector2 spawnPos = new Vector2(Random.Range(6.5f,8), Random.Range(-4.3f, 4.3f));
+            Vector2 spawnPos = new Vector2(Random.Range(0,10), Random.Range(-4.5f, 4.5f));
             Instantiate(calPrefab, spawnPos, Quaternion.identity);
-            yield return new WaitForSeconds(Random.Range(.5f,1));
+            yield return new WaitForSeconds(Random.Range(.3f,1));
         }
     }
 

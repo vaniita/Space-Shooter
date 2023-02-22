@@ -27,7 +27,7 @@ public class VerticalEnemyBehavior : MonoBehaviour
     }
 
     void Update() {
-        if (transform.position.x >= 4.3f || _gameManager.GetLives() <= 0) {
+        if (transform.position.y >= 6 || _gameManager.GetLives() <= 0) {
             Destroy(gameObject);
         }
     }
