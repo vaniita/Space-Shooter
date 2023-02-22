@@ -67,6 +67,9 @@ public class GameManager : MonoBehaviour
     public void BossTakeDmg(int dmg) {
         bossHealth -= dmg;
         bossHealthUI.text = "Boss Health: " + bossHealth;
+        if (bossHealth <= 0) {
+            SceneManager.LoadScene("Victory");
+        }
     }
 
     public int GetBossHealth() {

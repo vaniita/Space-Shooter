@@ -157,7 +157,7 @@ MonoBehaviour:
   livesUI: {fileID: 534927855}
   bossHealthUI: {fileID: 1914736518}
   currLvl: lvl3
-  nextLevelName: GameOver
+  nextLevelName: Victory
   gameOverLevel: GameOver
 --- !u!4 &444353393
 Transform:
