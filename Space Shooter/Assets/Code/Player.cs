@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     int speed = 10;
-    int bulletSpeed = 400;
+    int bulletSpeed = 600;
     Rigidbody2D _rigidbody2D;
     public Transform spawnPoint;
     public GameObject bulletPrefab;

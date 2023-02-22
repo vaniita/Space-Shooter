@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
@@ -10,11 +11,15 @@ public class Enemy : MonoBehaviour
     Rigidbody2D _rigidbody2D;
     public GameObject explosion;
     GameManager _gameManager;
-
+    string currentSceneName;
 
     void Start()
     {
+        currentSceneName = SceneManager.GetActiveScene().name;
         speed = Random.Range(40,150);
+        if (currentSceneName == "Level3") {
+            speed = 200;
+        }
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _rigidbody2D.AddForce(new Vector2(-speed,0));
         _gameManager = GameObject.FindObjectOfType<GameManager>();
