@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour
     public GameObject explosion;
     GameManager _gameManager;
     string currentSceneName;
+    public AudioClip hurtSound;
+    AudioSource _audioSource;
 
     void Start()
     {
@@ -23,6 +25,7 @@ public class Enemy : MonoBehaviour
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _rigidbody2D.AddForce(new Vector2(-speed,0));
         _gameManager = GameObject.FindObjectOfType<GameManager>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -36,6 +39,7 @@ public class Enemy : MonoBehaviour
 
         if (other.CompareTag("Player")){
             print("HIT");
+            _audioSource.PlayOneShot(hurtSound);
             _gameManager.loseLife(lifeValue);
             Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
