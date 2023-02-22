@@ -5,11 +5,14 @@ using TMPro;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
-     int score = 0;
-     int lives = 3;
+    int score = 0;
+    int lives = 3;
+    private int bossHealth = 100;
     public TextMeshProUGUI scoreUI;
     public TextMeshProUGUI livesUI;
-    public string levelName = "Level2";
+    public TextMeshProUGUI bossHealthUI;
+    public string currLvl = "Level1";
+    public string nextLevelName = "Level2";
     public string gameOverLevel= "GameOver";
 
     private void Awake()
@@ -24,15 +27,24 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        if (currLvl == "lvl3") {
+            lives = 10;
+        }
         scoreUI.text = "score: " + score;
         livesUI.text = "lives: " + lives;  
+        if (currLvl == "lvl3") {
+            bossHealthUI.text = "Boss Health: " + bossHealth;
+        } else {
+            bossHealthUI.text = "";
+        }
+        
     }
 
     public void AddScore(int points){
         score += points;
         scoreUI.text = "score: " + score;
-        if (score == 100){
-            SceneManager.LoadScene(levelName);
+        if (score == 100 && currLvl == "Level1"){
+            SceneManager.LoadScene(nextLevelName);
         }
     }
 
@@ -46,6 +58,19 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(gameOverLevel);
         }
 
+    }
+
+    public int GetLives() {
+        return lives;
+    }
+
+    public void BossTakeDmg(int dmg) {
+        bossHealth -= dmg;
+        bossHealthUI.text = "Boss Health: " + bossHealth;
+    }
+
+    public int GetBossHealth() {
+        return bossHealth;
     }
 
     
