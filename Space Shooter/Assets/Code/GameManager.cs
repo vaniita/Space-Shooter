@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     private int bossHealth = 100;
     public TextMeshProUGUI scoreUI;
     public TextMeshProUGUI livesUI;
+    public TextMeshProUGUI reduceHealthUI;
     public TextMeshProUGUI bossHealthUI;
     public string currLvl = "Level1";
     public string nextLevelName = "Level2";
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour
         else{
             DontDestroyOnLoad(gameObject);
         }
+        reduceHealthUI.gameObject.SetActive(false);  
     }
     private void Start()
     {
@@ -37,19 +39,17 @@ public class GameManager : MonoBehaviour
         } else {
             bossHealthUI.text = "";
         }
-        
     }
 
     public void AddScore(int points){
         score += points;
         scoreUI.text = "score: " + score;
-        if (score == 100 && currLvl == "Level1"){
+        if (score >= 100){
             SceneManager.LoadScene(nextLevelName);
         }
     }
 
     public void loseLife(int points){
-        score += 20;
         lives -= points;
         scoreUI.text = "score: " + score;
         livesUI.text = "lives: " + lives;
@@ -57,11 +57,21 @@ public class GameManager : MonoBehaviour
         if (lives<=0){
             SceneManager.LoadScene(gameOverLevel);
         }
+        ReduceHealthText();
 
     }
 
     public int GetLives() {
         return lives;
+    }
+
+    public void ReduceHealthText(){
+        reduceHealthUI.gameObject.SetActive(true);
+        Invoke("SetInactive", .5f);
+    }
+
+    public void SetInactive(){
+        reduceHealthUI.gameObject.SetActive(false);
     }
 
     public void BossTakeDmg(int dmg) {
