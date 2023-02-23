@@ -33,8 +33,7 @@ public class EnemyVertical : MonoBehaviour
         }
 
         if (other.CompareTag("Kill")){
-             _gameManager.ReduceHealthText();
-            _gameManager.loseLife(lifeValue);
+            _gameManager.AddScore(-10);
             Destroy(gameObject);
         } 
     }
