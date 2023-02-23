@@ -206,11 +206,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 16210174}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edd8ba0e6dede604184b3083ce00bbcd, type: 3}
+  m_Script: {fileID: 11500000, guid: 99e4f822598a10a41b4b869254bd5efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scoreUI: {fileID: 1941479112}
   livesUI: {fileID: 375603087}
+  reduceHealthUI: {fileID: 0}
   bossHealthUI: {fileID: 0}
   currLvl: Level1
   nextLevelName: Level2
@@ -562,7 +563,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 48288a0c1bdba604faa2001fce46123e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: bf04ed38a800041408fe0eb9ca152d28, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.435
   m_Pitch: 1

@@ -150,13 +150,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 444353391}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edd8ba0e6dede604184b3083ce00bbcd, type: 3}
+  m_Script: {fileID: 11500000, guid: 99e4f822598a10a41b4b869254bd5efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scoreUI: {fileID: 921496380}
   livesUI: {fileID: 534927855}
+  reduceHealthUI: {fileID: 0}
   bossHealthUI: {fileID: 1914736518}
-  currLvl: lvl3
+  currLvl: Level3
   nextLevelName: Victory
   gameOverLevel: GameOver
 --- !u!4 &444353393
