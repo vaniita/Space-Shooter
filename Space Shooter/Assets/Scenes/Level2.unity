@@ -1115,6 +1115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99e4f822598a10a41b4b869254bd5efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lives: 3
   scoreUI: {fileID: 998094386}
   livesUI: {fileID: 2109787335}
   reduceHealthUI: {fileID: 80724630}
@@ -6392,5 +6393,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2593305987475248622, guid: e4d6c4c5a5d8ad440a202f27f3b81068, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 716b6183c73abb348babe8d6445ddc69, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4d6c4c5a5d8ad440a202f27f3b81068, type: 3}
