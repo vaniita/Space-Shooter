@@ -10,10 +10,14 @@ public class Player : MonoBehaviour
     public Transform spawnPoint;
     public GameObject bulletPrefab;
 
+    Vector2 playView; 
 
     void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        // creating 'world'
+        Camera cam = Camera.main;
+        playView = cam.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
     }
 
     // Update is called once per frame
@@ -21,8 +25,28 @@ public class Player : MonoBehaviour
     {
         float xSpeed = Input.GetAxis("Horizontal") * speed;
         float ySpeed = Input.GetAxis("Vertical") * speed;
-        _rigidbody2D.velocity = new Vector2(xSpeed,ySpeed);
 
+        // confine player to screen
+        if (transform.position.x > playView.x)
+        {
+            xSpeed = Mathf.Clamp(xSpeed, -speed, 0);
+        }
+        else if (transform.position.x < -playView.x)
+        {
+            xSpeed = Mathf.Clamp(xSpeed, 0, speed); 
+        }
+        if (transform.position.y > playView.y)
+        {
+            ySpeed = Mathf.Clamp(ySpeed, -speed, 0); 
+        }
+        else if (transform.position.y < -playView.y)
+        {
+            ySpeed = Mathf.Clamp(ySpeed, 0, speed); 
+        }
+
+
+
+        _rigidbody2D.velocity = new Vector2(xSpeed,ySpeed);
         // fires when you hit the button
         if (Input.GetButtonDown("Jump")){
             // making a copy of bullet
