@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     int score = 0;
-    int lives = 3;
+    public int lives = 3;
     private int bossHealth = 100;
     public TextMeshProUGUI scoreUI;
     public TextMeshProUGUI livesUI;
@@ -22,19 +22,16 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        else{
-            DontDestroyOnLoad(gameObject);
-        }
+        // else{
+        //     DontDestroyOnLoad(gameObject);
+        // }
         reduceHealthUI.gameObject.SetActive(false);  
     }
     private void Start()
     {
-        if (currLvl == "lvl3") {
-            lives = 10;
-        }
         scoreUI.text = "score: " + score;
         livesUI.text = "lives: " + lives;  
-        if (currLvl == "lvl3") {
+        if (currLvl == "Level3") {
             bossHealthUI.text = "Boss Health: " + bossHealth;
         } else {
             bossHealthUI.text = "";
@@ -44,8 +41,11 @@ public class GameManager : MonoBehaviour
     public void AddScore(int points){
         score += points;
         scoreUI.text = "score: " + score;
-        if (score >= 100){
+        if (score >= 100 && currLvl != "Level3"){
             SceneManager.LoadScene(nextLevelName);
+            score = 0;
+            lives = 3;
+            reduceHealthUI.gameObject.SetActive(false);  
         }
     }
 
