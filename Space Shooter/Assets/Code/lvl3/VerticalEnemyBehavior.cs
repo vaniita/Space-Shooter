@@ -19,13 +19,6 @@ public class VerticalEnemyBehavior : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag("Player")) {
-            _audioSource.PlayOneShot(hurtSound);
-            _gameManager.loseLife(1);
-        }
-    }
-
     void Update() {
         if (transform.position.y >= 6 || _gameManager.GetLives() <= 0) {
             Destroy(gameObject);

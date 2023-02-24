@@ -217,6 +217,7 @@ MonoBehaviour:
   currLvl: Level1
   nextLevelName: Level2
   gameOverLevel: GameOver
+  explosion: {fileID: 7011465521143916290, guid: 80eb362fe4361024e8c31c87d8e56416, type: 3}
 --- !u!4 &16210176
 Transform:
   m_ObjectHideFlags: 0
@@ -1684,6 +1685,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1329339693183021076, guid: ecc8bad53892a2440bc23a884b7ce67c, type: 3}
+      propertyPath: m_Volume
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8607264932517336001, guid: ecc8bad53892a2440bc23a884b7ce67c, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1736,5 +1741,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8607264932517336061, guid: ecc8bad53892a2440bc23a884b7ce67c, type: 3}
+      propertyPath: hurtSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 2671c4ae8543f4542a408eadf777d838, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecc8bad53892a2440bc23a884b7ce67c, type: 3}

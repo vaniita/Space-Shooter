@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public string currLvl = "Level1";
     public string nextLevelName = "Level2";
     public string gameOverLevel= "GameOver";
+    public GameObject explosion;
+    
 
     private void Awake()
     {
@@ -28,7 +30,7 @@ public class GameManager : MonoBehaviour
         reduceHealthUI.gameObject.SetActive(false);  
     }
     private void Start()
-    {
+    {        
         scoreUI.text = "score: " + score;
         livesUI.text = "lives: " + lives;  
         if (currLvl == "Level3") {
@@ -55,10 +57,18 @@ public class GameManager : MonoBehaviour
         livesUI.text = "lives: " + lives;
 
         if (lives<=0){
-            SceneManager.LoadScene(gameOverLevel);
+            StartCoroutine(PlayerDeath());
         }
         ReduceHealthText();
 
+    }
+
+    IEnumerator PlayerDeath() {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        Instantiate(explosion, player.transform.position, Quaternion.identity);
+        Destroy(player);
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(gameOverLevel);
     }
 
     public int GetLives() {

@@ -270,6 +270,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6834496303623888434, guid: 6d88dc40fd9e22b4b9a80acf21735a08, type: 3}
   spawnPoint: {fileID: 8217704706862257173}
   shootSound: {fileID: 8300000, guid: 8e80c0cdc43117d40a2fdb3df9e142ea, type: 3}
+  hitSound: {fileID: 8300000, guid: 70493d04232920241b7e6c057327e9ad, type: 3}
 --- !u!1 &8217704706862257174
 GameObject:
   m_ObjectHideFlags: 0

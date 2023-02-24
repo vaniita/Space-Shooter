@@ -7,13 +7,10 @@ public class Enemy : MonoBehaviour
 {
     int speed;
     int pointValue = 10;
-    int lifeValue = 1;
     Rigidbody2D _rigidbody2D;
     public GameObject explosion;
     GameManager _gameManager;
     string currentSceneName;
-    public AudioClip hurtSound;
-    AudioSource _audioSource;
 
     void Start()
     {
@@ -25,7 +22,6 @@ public class Enemy : MonoBehaviour
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _rigidbody2D.AddForce(new Vector2(-speed,0));
         _gameManager = GameObject.FindObjectOfType<GameManager>();
-        _audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -37,15 +33,18 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (other.CompareTag("Player")){
-            print("HIT");
-            _audioSource.PlayOneShot(hurtSound);
-            _gameManager.loseLife(lifeValue);
-        }
-
         if (other.CompareTag("Kill")){
+            if (currentSceneName == "Level3") {
+                _gameManager.AddScore(-15);
+            }
             Destroy(gameObject);
         } 
+    }
+
+    void Update() {
+        if (_gameManager.GetLives() <= 0) {
+            Destroy(gameObject);
+        }
     }
 
 }

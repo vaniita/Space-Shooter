@@ -9,6 +9,10 @@ public class Player : MonoBehaviour
     Rigidbody2D _rigidbody2D;
     public Transform spawnPoint;
     public GameObject bulletPrefab;
+    private SpriteRenderer _renderer;
+    GameManager _gameManager;
+    public AudioClip hurtSound;
+    AudioSource _audioSource;
 
     Vector2 playView; 
 
@@ -18,6 +22,23 @@ public class Player : MonoBehaviour
         // creating 'world'
         Camera cam = Camera.main;
         playView = cam.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
+        _renderer = GetComponent<SpriteRenderer>();
+        _gameManager = GameObject.FindObjectOfType<GameManager>();
+        _audioSource = GetComponent<AudioSource>();
+    }
+
+    IEnumerator FlashRed() {
+        _renderer.color = Color.red;
+        yield return new WaitForSeconds(.1f);
+        _renderer.color = Color.white;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.CompareTag("Enemy") || other.CompareTag("BossBullet")) {
+            _audioSource.PlayOneShot(hurtSound);
+            _gameManager.loseLife(1);
+            StartCoroutine(FlashRed());
+        }
     }
 
     // Update is called once per frame

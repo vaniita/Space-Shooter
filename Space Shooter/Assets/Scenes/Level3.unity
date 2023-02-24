@@ -296,6 +296,7 @@ MonoBehaviour:
   currLvl: Level3
   nextLevelName: Victory
   gameOverLevel: GameOver
+  explosion: {fileID: 7011465521143916290, guid: 80eb362fe4361024e8c31c87d8e56416, type: 3}
 --- !u!4 &444353393
 Transform:
   m_ObjectHideFlags: 0
@@ -414,6 +415,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1329339693183021076, guid: ecc8bad53892a2440bc23a884b7ce67c, type: 3}
+      propertyPath: m_Volume
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8607264932517336001, guid: ecc8bad53892a2440bc23a884b7ce67c, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -462,6 +467,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8607264932517336061, guid: ecc8bad53892a2440bc23a884b7ce67c, type: 3}
+      propertyPath: hurtSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 2671c4ae8543f4542a408eadf777d838, type: 3}
+    - target: {fileID: 8607264932517336061, guid: ecc8bad53892a2440bc23a884b7ce67c, type: 3}
+      propertyPath: hurtSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 36e65ad82a6072a4d983c51acc0ded0f, type: 3}
+    - target: {fileID: 8607264932517336061, guid: ecc8bad53892a2440bc23a884b7ce67c, type: 3}
+      propertyPath: defaultSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 586b6dbcd2a766a40bd40302845971d7, type: 3}
+    - target: {fileID: 8607264932517336061, guid: ecc8bad53892a2440bc23a884b7ce67c, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 1387462767}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecc8bad53892a2440bc23a884b7ce67c, type: 3}
 --- !u!1 &529419742
@@ -1101,6 +1122,11 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!212 &1387462767 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8607264932517336000, guid: ecc8bad53892a2440bc23a884b7ce67c, type: 3}
+  m_PrefabInstance: {fileID: 482398801}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1643559501
 GameObject:
   m_ObjectHideFlags: 0

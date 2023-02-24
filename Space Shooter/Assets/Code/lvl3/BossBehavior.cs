@@ -15,6 +15,8 @@ public class BossBehavior : MonoBehaviour
     public Transform spawnPoint;
     int bulletSpd = 500;
     public AudioClip shootSound;
+    public AudioClip hitSound;
+    SpriteRenderer _renderer;
 
     // Start is called before the first frame update
     IEnumerator Start()
@@ -24,6 +26,7 @@ public class BossBehavior : MonoBehaviour
         _rigidbody2D.AddForce(new Vector2(0, spd));
         _gameManager = GameObject.FindObjectOfType<GameManager>();
         _audioSource = GetComponent<AudioSource>();
+        _renderer = GetComponent<SpriteRenderer>();
 
         while (_gameManager.GetLives() > 0) {
             GameObject newBullet = Instantiate(bulletPrefab, spawnPoint.position, Quaternion.identity);
@@ -35,6 +38,8 @@ public class BossBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Bullet")) {
+            _audioSource.PlayOneShot(hitSound);
+            StartCoroutine(FlashRed());
             _gameManager.BossTakeDmg(2);
             if (_gameManager.GetBossHealth() <= 0) {
                 _gameManager.AddScore(ptVal);
@@ -48,6 +53,12 @@ public class BossBehavior : MonoBehaviour
             _audioSource.PlayOneShot(hurtSound);
             _gameManager.loseLife(1);
         }
+    }
+
+    IEnumerator FlashRed() {
+        _renderer.color = Color.red;
+        yield return new WaitForSeconds(.1f);
+        _renderer.color = Color.white;
     }
 
     void Update() {
